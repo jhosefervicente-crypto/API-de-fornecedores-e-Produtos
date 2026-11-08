@@ -1,7 +1,7 @@
 import { Connection } from "mysql2";
 import conexao from "../database/conexao.js";
 
-export async function cadastrarP(produto) {
+export async function cadastrarProduto(produto) {
     const sql = "INSER INTO produto (descricao, preco, peso) VALUES (?, ?, ?)";
     const [resultado] = await conexao.execute(sql, [
         produto.descricao,
@@ -12,16 +12,37 @@ export async function cadastrarP(produto) {
     return resultado.insertId;
 };
 
-export async function listaP() {
+export async function listaProduto() {
     const sql = "SELECT * FROM produto ORDER BY id_produto";
-    const [linhas] = await conexao.execute(sql);
+    const [resultado] = await conexao.execute(sql);
 
-    return linhas;
+    return resultado;
 };
 
-export async function buscarPorIdP(id) {
+export async function buscarPorIdProduto(id) {
     const sql = "SELECT * FROM amostra WHERE id_amostra = ?";
-    const [linhas] = await conexao.execute(sql, [id]);
+    const [resultado] = await conexao.execute(sql, [id]);
 
-    return linhas
+    return resultado;
+};
+
+export async function deletarProduto(id) {
+    const sql = 'DELETE FROM produto WHERE id_produto = ?';
+
+    const [resultado] = await conexao.execute(sql, [id]);
+
+    return resultado.affectedRows;
+};
+
+export async function atualizarProduto(id, produto) {
+    const sql = "UPDATE produto SET descricao = ?, preco = ?, peso = ?  WHERE id_produto = ?";
+
+    const [resultado] = await conexao.execute(sql, [
+        produto.descricao,
+        produto.preco,
+        produto.peso,
+        id
+    ]);
+
+    return resultado.affectedRows;
 }

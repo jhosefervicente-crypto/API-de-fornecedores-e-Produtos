@@ -3,8 +3,8 @@ import { Fornecedor } from "../model/Fornecedor.js";
 
 import { 
     cadastrarFornecedor,
-    listaFornecedor,
-    buscarPorIdFornecedor,
+    listarFornecedor,
+    BuscarPorIdFornecedor,
     atualizarFornecedor,
     deletarFornecedor
 } from "../repository/fornecedorRepository.js";
@@ -35,7 +35,7 @@ export async function criarFornecedor(req, res) {
 
 export async function listarTodosFornecedor(req, res) {
     try {
-        const fornecedor = await listaFornecedor();
+        const fornecedor = await listarFornecedor();
         
         return res.status(200).json({fornecedor})
     } catch (erro) {
@@ -47,7 +47,7 @@ export async function listarTodosFornecedor(req, res) {
 
 export async function buscarFornecedor(req, res) {
     try {
-        const fornecedor = await buscarPorIdFornecedor(req.params.id);
+        const fornecedor = await BuscarPorIdFornecedor(req.params.id);
 
         if (!fornecedor) {
             return res.status(404).json({

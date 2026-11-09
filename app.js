@@ -23,3 +23,5 @@ async function iniciarServidor() {
         console.log("Não foi possivel conectar ao banco de dados");
     }
 }
+
+iniciarServidor();

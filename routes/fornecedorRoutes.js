@@ -1,7 +1,7 @@
 import { Router } from "express";
 import {
     criarFornecedor,
-    listarTodosFornecedors,
+    listarTodosFornecedor,
     buscarFornecedor,
     editarFornecedor,
     removerFornecedor
@@ -10,7 +10,7 @@ import {
 const router = Router();
 
 router.post("/", criarFornecedor);
-router.get("/", listarTodosFornecedors);
+router.get("/", listarTodosFornecedor);
 router.get("/:id", buscarFornecedor);
 router.put("/:id", editarFornecedor);
 router.delete("/:id", removerFornecedor);

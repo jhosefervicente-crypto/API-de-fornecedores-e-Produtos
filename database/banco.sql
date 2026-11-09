@@ -3,7 +3,7 @@ create database db_produto;
 use db_produto;
 
 create table fornecedor(
-	id_funcionario int auto_increment primary key,
+	id_fornecedor int auto_increment primary key,
     nome varchar(150) not null,
     cnpj char(14) unique
 );
